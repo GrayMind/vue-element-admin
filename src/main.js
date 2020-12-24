@@ -53,9 +53,10 @@ const app = createApp(App)
 app.use(store)
 app.use(router)
 app.use(ElementPlus)
-app.config.errorHandler = errorHandler
 app.component('svg-icon', SvgIcon)
 app.mount('#app')
+
+errorHandler(app)
 
 // new Vue({
 //   el: '#app',

@@ -390,7 +390,7 @@ export const asyncRoutes = [
 const createRouter = () => {
   return VueRouter.createRouter({
     history: VueRouter.createWebHashHistory(),
-    scrollBehavior: () => ({ y: 0 }),
+    scrollBehavior: () => ({ top: 0 }),
     routes: constantRoutes // short for `routes: routes`
   })
 }
@@ -408,5 +408,9 @@ export function resetRouter() {
   const newRouter = createRouter()
   router.matcher = newRouter.matcher // reset router
 }
+
+router.afterEach((to, from, failure) => {
+  console.log('navigation', to, from, failure)
+})
 
 export default router
