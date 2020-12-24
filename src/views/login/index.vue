@@ -134,7 +134,7 @@ export default {
       this.$refs.password.focus()
     }
   },
-  destroyed() {
+  unmounted() {
     // window.removeEventListener('storage', this.afterQRScan)
   },
   methods: {
