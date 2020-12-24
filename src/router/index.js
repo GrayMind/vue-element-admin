@@ -1,7 +1,7 @@
-import Vue from 'vue'
-import Router from 'vue-router'
+// import Vue from 'vue'
+import * as VueRouter from 'vue-router'
 
-Vue.use(Router)
+// Vue.use(Router)
 
 /* Layout */
 import Layout from '@/layout'
@@ -387,11 +387,19 @@ export const asyncRoutes = [
   { path: '*', redirect: '/404', hidden: true }
 ]
 
-const createRouter = () => new Router({
-  // mode: 'history', // require service support
-  scrollBehavior: () => ({ y: 0 }),
-  routes: constantRoutes
-})
+const createRouter = () => {
+  return VueRouter.createRouter({
+    history: VueRouter.createWebHashHistory(),
+    scrollBehavior: () => ({ y: 0 }),
+    routes: constantRoutes // short for `routes: routes`
+  })
+}
+
+// const createRouter = () => new Router({
+//   // mode: 'history', // require service support
+//   scrollBehavior: () => ({ y: 0 }),
+//   routes: constantRoutes
+// })
 
 const router = createRouter()
 
