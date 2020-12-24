@@ -511,7 +511,7 @@ const asyncRoutes = [
   },
 
   {
-    path: 'external-link',
+    path: '/external-link',
     component: 'layout/Layout',
     children: [
       {
@@ -521,7 +521,7 @@ const asyncRoutes = [
     ]
   },
 
-  { path: '*', redirect: '/404', hidden: true }
+  { path: '/*', redirect: '/404', hidden: true }
 ]
 
 module.exports = {
