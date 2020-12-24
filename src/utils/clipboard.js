@@ -1,19 +1,29 @@
-import Vue from 'vue'
+// import Vue from 'vue'
 import Clipboard from 'clipboard'
+import { ElMessage } from 'element-plus'
 
 function clipboardSuccess() {
-  Vue.prototype.$message({
+  ElMessage.message({
     message: 'Copy successfully',
     type: 'success',
     duration: 1500
   })
+  // Vue.prototype.$message({
+  //   message: 'Copy successfully',
+  //   type: 'success',
+  //   duration: 1500
+  // })
 }
 
 function clipboardError() {
-  Vue.prototype.$message({
+  ElMessage.message({
     message: 'Copy failed',
     type: 'error'
   })
+  // Vue.prototype.$message({
+  //   message: 'Copy failed',
+  //   type: 'error'
+  // })
 }
 
 export default function handleClipboard(text, event) {

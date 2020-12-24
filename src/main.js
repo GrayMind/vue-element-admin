@@ -18,7 +18,7 @@ import router from './router'
 
 import './icons' // icon
 import './permission' // permission control
-import './utils/error-log' // error log
+import errorHandler from './utils/error-log' // error log
 
 // import * as filters from './filters' // global filters
 
@@ -53,6 +53,7 @@ const app = createApp(App)
 app.use(store)
 app.use(router)
 app.use(ElementPlus)
+app.config.errorHandler = errorHandler
 app.component('svg-icon', SvgIcon)
 app.mount('#app')
 
