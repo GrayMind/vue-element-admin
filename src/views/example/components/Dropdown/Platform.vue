@@ -4,13 +4,15 @@
       Platfroms({{ platforms.length }})
       <i class="el-icon-caret-bottom el-icon--right" />
     </el-button>
-    <el-dropdown-menu slot="dropdown" class="no-border">
-      <el-checkbox-group v-model="platforms" style="padding: 5px 15px;">
-        <el-checkbox v-for="item in platformsOptions" :key="item.key" :label="item.key">
-          {{ item.name }}
-        </el-checkbox>
-      </el-checkbox-group>
-    </el-dropdown-menu>
+    <template #dropdown>
+      <el-dropdown-menu class="no-border">
+        <el-checkbox-group v-model="platforms" style="padding: 5px 15px;">
+          <el-checkbox v-for="item in platformsOptions" :key="item.key" :label="item.key">
+            {{ item.name }}
+          </el-checkbox>
+        </el-checkbox-group>
+      </el-dropdown-menu>
+    </template>
   </el-dropdown>
 </template>
 
