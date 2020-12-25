@@ -13,7 +13,7 @@
     <el-table-column label="Status" width="100" align="center">
       <template #default="scope">
         <el-tag :type="statusFilter(scope.row.status)">
-          {{ row.status }}
+          {{ scope.row.status }}
         </el-tag>
       </template>
     </el-table-column>

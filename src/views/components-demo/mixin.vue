@@ -2,9 +2,11 @@
   <div class="mixin-components-container">
     <el-row>
       <el-card class="box-card">
-        <div slot="header" class="clearfix">
-          <span>Buttons</span>
-        </div>
+        <template #header>
+          <div class="clearfix">
+            <span>Buttons</span>
+          </div>
+        </template>
         <div style="margin-bottom:50px;">
           <el-col :span="4" class="text-center">
             <router-link class="pan-btn blue-btn" to="/documentation/index">
@@ -43,9 +45,11 @@
     <el-row :gutter="20" style="margin-top:50px;">
       <el-col :span="6">
         <el-card class="box-card">
-          <div slot="header" class="clearfix">
-            <span>Material Design 的input</span>
-          </div>
+          <template #header>
+            <div class="clearfix">
+              <span>Material Design 的input</span>
+            </div>
+          </template>
           <div style="height:100px;">
             <el-form :model="demo" :rules="demoRules">
               <el-form-item prop="title">
@@ -60,9 +64,11 @@
 
       <el-col :span="6">
         <el-card class="box-card">
-          <div slot="header" class="clearfix">
-            <span>图片hover效果</span>
-          </div>
+          <template #header>
+            <div class="clearfix">
+              <span>图片hover效果</span>
+            </div>
+          </template>
           <div class="component-item">
             <pan-thumb width="100px" height="100px" image="https://wpimg.wallstcn.com/577965b9-bb9e-4e02-9f0c-095b41417191">
               vue-element-admin
@@ -73,9 +79,11 @@
 
       <el-col :span="6">
         <el-card class="box-card">
-          <div slot="header" class="clearfix">
-            <span>水波纹 waves v-directive</span>
-          </div>
+          <template #header>
+            <div class="clearfix">
+              <span>水波纹 waves v-directive</span>
+            </div>
+          </template>
           <div class="component-item">
             <el-button v-waves type="primary">
               水波纹效果
@@ -86,9 +94,11 @@
 
       <el-col :span="6">
         <el-card class="box-card">
-          <div slot="header" class="clearfix">
-            <span>hover text</span>
-          </div>
+          <template #header>
+            <div class="clearfix">
+              <span>hover text</span>
+            </div>
+          </template>
           <div class="component-item">
             <mallki class-name="mallki-text" text="vue-element-admin" />
           </div>
@@ -99,9 +109,11 @@
     <el-row :gutter="20" style="margin-top:50px;">
       <el-col :span="8">
         <el-card class="box-card">
-          <div slot="header" class="clearfix">
-            <span>Share</span>
-          </div>
+          <template #header>
+            <div class="clearfix">
+              <span>Share</span>
+            </div>
+          </template>
           <div class="component-item" style="height:420px;">
             <dropdown-menu :items="articleList" style="margin:0 auto;" title="系列文章" />
           </div>

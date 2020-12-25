@@ -1,9 +1,10 @@
 <template>
   <el-card style="margin-bottom:20px;">
-    <div slot="header" class="clearfix">
-      <span>About me</span>
-    </div>
-
+    <template #header>
+      <div class="clearfix">
+        <span>About me</span>
+      </div>
+    </template>
     <div class="user-profile">
       <div class="box-center">
         <pan-thumb :image="user.avatar" :height="'100px'" :width="'100px'" :hoverable="false">
