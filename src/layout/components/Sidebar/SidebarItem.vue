@@ -58,7 +58,7 @@ export default {
   },
 
   mounted() {
-    console.log('Sidebar---Item', this.item)
+    // console.log('Sidebar---Item', this.item)
   },
   methods: {
     hasOneShowingChild(children = [], parent) {
