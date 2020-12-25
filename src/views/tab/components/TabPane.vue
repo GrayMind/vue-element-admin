@@ -14,7 +14,7 @@
 
     <el-table-column width="180px" align="center" label="Date">
       <template #default="scope">
-        <span>{{ scope.row.timestamp | parseTime('{y}-{m}-{d} {h}:{i}') }}</span>
+        <span>{{ $filters.parseTime(scope.row.timestamp, '{y}-{m}-{d} {h}:{i}') }}</span>
       </template>
     </el-table-column>
 
@@ -45,7 +45,7 @@
 
     <el-table-column class-name="status-col" label="Status" width="110">
       <template #default="scope">
-        <el-tag :type="scope.row.status | statusFilter">
+        <el-tag :type="statusFilter(scope.row.status)">
           {{ scope.row.status }}
         </el-tag>
       </template>
@@ -57,16 +57,6 @@
 import { fetchList } from '@/api/article'
 
 export default {
-  filters: {
-    statusFilter(status) {
-      const statusMap = {
-        published: 'success',
-        draft: 'info',
-        deleted: 'danger'
-      }
-      return statusMap[status]
-    }
-  },
   props: {
     type: {
       type: String,
@@ -89,6 +79,14 @@ export default {
     this.getList()
   },
   methods: {
+    statusFilter(status) {
+      const statusMap = {
+        published: 'success',
+        draft: 'info',
+        deleted: 'danger'
+      }
+      return statusMap[status]
+    },
     getList() {
       this.loading = true
       this.$emit('create') // for test

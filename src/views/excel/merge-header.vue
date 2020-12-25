@@ -37,7 +37,7 @@
       <el-table-column align="center" label="Date" width="220">
         <template #default="scope">
           <i class="el-icon-time" />
-          <span>{{ scope.row.timestamp | parseTime('{y}-{m}-{d} {h}:{i}') }}</span>
+          <span>{{ $filters.parseTime(scope.row.timestamp, '{y}-{m}-{d} {h}:{i}') }}</span>
         </template>
       </el-table-column>
     </el-table>

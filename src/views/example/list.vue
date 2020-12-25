@@ -9,7 +9,7 @@
 
       <el-table-column width="180px" align="center" label="Date">
         <template #default="scope">
-          <span>{{ scope.row.timestamp | parseTime('{y}-{m}-{d} {h}:{i}') }}</span>
+          <span>{{ $filters.parseTime(scope.row.timestamp, '{y}-{m}-{d} {h}:{i}') }}</span>
         </template>
       </el-table-column>
 
@@ -27,8 +27,8 @@
 
       <el-table-column class-name="status-col" label="Status" width="110">
         <template #default="scope">
-          <el-tag :type="scope.row.status | statusFilter">
-            {{ row.status }}
+          <el-tag :type="statusFilter(scope.row.status)">
+            {{ scope.row.status }}
           </el-tag>
         </template>
       </el-table-column>
@@ -36,7 +36,7 @@
       <el-table-column min-width="300px" label="Title">
         <template #default="scope">
           <router-link :to="'/example/edit/'+scope.row.id" class="link-type">
-            <span>{{ row.title }}</span>
+            <span>{{ scope.row.title }}</span>
           </router-link>
         </template>
       </el-table-column>
@@ -63,16 +63,6 @@ import Pagination from '@/components/Pagination' // Secondary package based on e
 export default {
   name: 'ArticleList',
   components: { Pagination },
-  filters: {
-    statusFilter(status) {
-      const statusMap = {
-        published: 'success',
-        draft: 'info',
-        deleted: 'danger'
-      }
-      return statusMap[status]
-    }
-  },
   data() {
     return {
       list: null,
@@ -88,6 +78,14 @@ export default {
     this.getList()
   },
   methods: {
+    statusFilter(status) {
+      const statusMap = {
+        published: 'success',
+        draft: 'info',
+        deleted: 'danger'
+      }
+      return statusMap[status]
+    },
     getList() {
       this.listLoading = true
       fetchList(this.listQuery).then(response => {

@@ -42,13 +42,13 @@
       </el-table-column>
       <el-table-column label="Date" width="150px" align="center">
         <template #default="{row}">
-          <span>{{ row.timestamp | parseTime('{y}-{m}-{d} {h}:{i}') }}</span>
+          <span>{{ $filters.parseTime(row.timestamp, '{y}-{m}-{d} {h}:{i}') }}</span>
         </template>
       </el-table-column>
       <el-table-column label="Title" min-width="150px">
         <template #default="{row}">
           <span class="link-type" @click="handleUpdate(row)">{{ row.title }}</span>
-          <el-tag>{{ row.type | typeFilter }}</el-tag>
+          <el-tag>{{ typeFilter(row.type) }}</el-tag>
         </template>
       </el-table-column>
       <el-table-column label="Author" width="110px" align="center">
@@ -74,7 +74,7 @@
       </el-table-column>
       <el-table-column label="Status" class-name="status-col" width="100">
         <template #default="{row}">
-          <el-tag :type="row.status | statusFilter">
+          <el-tag :type="statusFilter(row.status)">
             {{ row.status }}
           </el-tag>
         </template>
@@ -169,19 +169,6 @@ export default {
   name: 'ComplexTable',
   components: { Pagination },
   directives: { waves },
-  filters: {
-    statusFilter(status) {
-      const statusMap = {
-        published: 'success',
-        draft: 'info',
-        deleted: 'danger'
-      }
-      return statusMap[status]
-    },
-    typeFilter(type) {
-      return calendarTypeKeyValue[type]
-    }
-  },
   data() {
     return {
       tableKey: 0,
@@ -230,6 +217,17 @@ export default {
     this.getList()
   },
   methods: {
+    statusFilter(status) {
+      const statusMap = {
+        published: 'success',
+        draft: 'info',
+        deleted: 'danger'
+      }
+      return statusMap[status]
+    },
+    typeFilter(type) {
+      return calendarTypeKeyValue[type]
+    },
     getList() {
       this.listLoading = true
       fetchList(this.listQuery).then(response => {

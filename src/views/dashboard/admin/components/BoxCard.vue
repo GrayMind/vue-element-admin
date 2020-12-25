@@ -34,15 +34,6 @@ import Mallki from '@/components/TextHoverEffect/Mallki'
 export default {
   components: { PanThumb, Mallki },
 
-  filters: {
-    statusFilter(status) {
-      const statusMap = {
-        success: 'success',
-        pending: 'danger'
-      }
-      return statusMap[status]
-    }
-  },
   data() {
     return {
       statisticsData: {
@@ -57,6 +48,15 @@ export default {
       'avatar',
       'roles'
     ])
+  },
+  methods: {
+    statusFilter(status) {
+      const statusMap = {
+        success: 'success',
+        pending: 'danger'
+      }
+      return statusMap[status]
+    }
   }
 }
 </script>

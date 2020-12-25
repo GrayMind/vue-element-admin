@@ -20,7 +20,7 @@ import './icons' // icon
 import './permission' // permission control
 import errorHandler from './utils/error-log' // error log
 
-// import * as filters from './filters' // global filters
+import * as filters from './filters' // global filters
 
 import SvgIcon from '@/components/SvgIcon'// svg component
 
@@ -42,11 +42,6 @@ if (process.env.NODE_ENV === 'production') {
 //   locale: enLang // 如果使用中文，无需设置，请删除
 // })
 
-// register global utility filters
-// Object.keys(filters).forEach(key => {
-//   Vue.filter(key, filters[key])
-// })
-
 // Vue.config.productionTip = false
 
 const app = createApp(App)
@@ -54,6 +49,8 @@ app.use(store)
 app.use(router)
 app.use(ElementPlus)
 app.component('svg-icon', SvgIcon)
+// register global utility filters
+app.config.globalProperties.$filters = filters
 app.mount('#app')
 
 errorHandler(app)
